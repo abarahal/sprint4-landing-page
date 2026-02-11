@@ -45,7 +45,6 @@ function initializeLazyLoading() {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     const img = entry.target;
-                    // Image will load naturally with loading="lazy" attribute
                     observer.unobserve(img);
                 }
             });
@@ -53,7 +52,6 @@ function initializeLazyLoading() {
 
         images.forEach(img => imageObserver.observe(img));
     } else {
-        // Fallback for browsers without IntersectionObserver
         images.forEach(img => {
             img.removeAttribute('loading');
         });
