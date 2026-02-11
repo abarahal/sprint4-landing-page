@@ -1,18 +1,6 @@
-/**
- * Responsive Landing Page - JavaScript Interactions
- * Handles smooth scrolling, accessibility features, and performance optimizations
- */
 
-// ============================================
-// 1. Accessibility Features
-// ============================================
-
-/**
- * Skip to main content link functionality
- * Allows keyboard users to skip navigation and go directly to content
- */
 document.addEventListener('DOMContentLoaded', () => {
-    // Enable focus management
+
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const href = this.getAttribute('href');
@@ -30,19 +18,25 @@ document.addEventListener('DOMContentLoaded', () => {
     // Lazy loading images for performance
     initializeLazyLoading();
 
-    
+    //animating the title
+    function animateTitle(id = 'animatedTitle', speed = 35) {
+        const el = document.getElementById(id);
+        if (!el) return;
+        const fullText = el.dataset.text || el.textContent.trim();
+        el.textContent = '';
+        let i = 0;
+        const timer = setInterval(() => {
+            el.textContent = fullText.slice(0, ++i);
+            if (i >= fullText.length) clearInterval(timer);
+        }, speed);
+    }
 
-    
+    animateTitle('animatedTitle', 40);
+
 });
 
-// ============================================
-// 2. Lazy Loading Images
-// ============================================
 
-/**
- * Initialize lazy loading for images
- * Improves page performance by loading images only when they're visible
- */
+// Lazy loading images 
 function initializeLazyLoading() {
     const images = document.querySelectorAll('img[loading="lazy"]');
 
