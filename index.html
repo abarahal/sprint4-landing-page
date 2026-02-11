@@ -1,0 +1,400 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="description" content="Construction / Rental landing page - responsive template"/>
+    <title>Construction Rental — Landing</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: "#1c238d",
+              beige: "#f6f3ee",
+            },
+            fontFamily: {
+              sans: ["Inter", "DM Sans", "system-ui", "sans-serif"],
+            },
+          },
+        },
+      };
+    </script>
+    <style>
+      /* Card entrance animation (translate + translate-x) */
+      .card-animate {
+        opacity: 0;
+        transform: translate3d(0, 20px, 0);
+        transition:
+          transform 700ms cubic-bezier(0.2, 0.9, 0.2, 1),
+          opacity 700ms ease;
+        will-change: transform, opacity;
+      }
+      .card-animate.dir-left {
+        transform: translate3d(-28px, 20px, 0);
+      }
+      .card-animate.dir-right {
+        transform: translate3d(28px, 20px, 0);
+      }
+      .card-animate.dir-up {
+        transform: translate3d(0, 32px, 0);
+      }
+      .card-animate.in-view {
+        opacity: 1;
+        transform: translate3d(0, 0, 0);
+      }
+    
+      .card-float {
+        animation-name: cardFloat;
+        animation-duration: 4s;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-fill-mode: both;
+        will-change: transform;
+      }
+      .card-animate.dir-left.card-float {
+        animation-delay: 0s;
+      }
+      .card-animate.dir-up.card-float {
+        animation-delay: 0.2s;
+      }
+      .card-animate.dir-right.card-float {
+        animation-delay: 0.4s;
+      }
+      /* Continuous horizontal marquee (slides to the right) */
+      .slider {
+        overflow: hidden;
+      }
+      .track {
+        display: flex;
+        gap: 1.5rem;
+        align-items: stretch;
+      }
+      .slide-item {
+        flex: 0 0 320px;
+        min-width: 280px;
+      }
+      @keyframes marqueeRight {
+        from {
+          transform: translateX(-50%);
+        }
+        to {
+          transform: translateX(0%);
+        }
+      }
+      @media (min-width: 768px) {
+        .track {
+          animation: marqueeRight 14s linear infinite;
+        }
+      }
+      @media (max-width: 767px) {
+        .track {
+          flex-direction: column;
+          gap: 1rem;
+          animation: none;
+        }
+        .slide-item {
+          flex: 1 1 auto;
+          min-width: auto;
+        }
+      }
+    </style>
+  </head>
+  <body class="antialiased text-gray-900 bg-white">
+    <header class="w-full border-b">
+      <!-- Top info bar  -->
+      <div class="w-full bg-white">
+        <div class="max-w-6xl mx-auto px-6 py-2 flex items-center justify-between text-xs text-gray-600" >
+          <div class="flex items-center gap-3">
+            <span>Call us: (123) 456-7890</span>
+            <span class="hidden sm:inline">•</span>
+            <span class="hidden sm:inline">Mon–Fri 9am–5pm</span>
+          </div>
+          <div class="flex items-center gap-4">
+            <a href="#" class="hover:text-primary">EN</a>
+            <a href="#" class="hover:text-primary">Login</a>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-6xl mx-auto flex items-center justify-between gap-6 px-6 py-4">
+        <div class="flex items-center gap-4">
+          <img src="images/Logo.png" alt="Logo" class="w-24 h-auto object-contain" loading="lazy" decoding="async" />
+          <nav class="hidden md:flex gap-8 text-sm font-medium">
+            <a href="#features" class="text-gray-700 hover:text-primary">About</a>
+            <a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+            <a href="#cases" class="text-gray-700 hover:text-primary">Projects</a>
+            <a href="#contact" class="text-gray-700 hover:text-primary">Contact</a>
+          </nav>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="hidden md:flex items-center gap-3 text-sm text-gray-600">
+            <span class="sr-only">Follow us</span>
+            <a href="#" aria-label="facebook" class="text-gray-600 hover:text-primary">
+              <img src="images/facebook.png" alt="Facebook" class="w-4 h-4" loading="lazy" decoding="async"/>
+            </a>
+            <a href="#" aria-label="twitter" class="text-gray-600 hover:text-primary">
+              <img
+                src="images/twitter.png"
+                alt="Twitter"
+                class="w-4 h-4"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#"
+              aria-label="instagram"
+              class="text-gray-600 hover:text-primary"
+            >
+              <img
+                src="images/instagram.png"
+                alt="Instagram"
+                class="w-4 h-4"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#"
+              aria-label="linkedin"
+              class="text-gray-600 hover:text-primary"
+            >
+              <img
+                src="images/linkedin.png"
+                alt="LinkedIn"
+                class="w-4 h-4"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+            <a
+              href="#"
+              aria-label="youtube"
+              class="text-gray-600 hover:text-primary"
+            >
+              <img
+                src="images/youtube.png"
+                alt="YouTube"
+                class="w-4 h-4"
+                loading="lazy"
+                decoding="async"
+              />
+            </a>
+          </div>
+
+          <a
+            href="#contact"
+            class="bg-primary text-white px-5 py-2 rounded-full text-sm font-semibold"
+            >Request Quote</a
+          >
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="bg-primary text-white">
+      <div class="max-w-6xl mx-auto px-6 py-20 text-center">
+        <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+          Lorem Ipsum Is Simply Dummy Text Of
+        </h1>
+        <p class="mt-6 max-w-3xl mx-auto text-lg md:text-xl text-gray-100/90">
+          Lorem ipsum is simply dummy text of the printing and typesetting
+          industry. Lorem Ipsum has been the industry's standard dummy.
+        </p>
+
+        <div class="mt-10 w-full max-w-4xl mx-auto">
+          <img
+            src="images/Image-box.png"
+            alt="Hero media"
+            class="w-full h-64 md:h-72 object-cover rounded-lg bg-gray-200"
+            loading="lazy"
+            decoding="async"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Features strip -->
+    <section id="features" class="bg-beige py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-2xl md:text-3xl font-bold text-primary"> Lorem Ipsum Is simply done </h2>
+        <p class="text-center mt-4 text-gray-600 max-w-2xl mx-auto">Short subtitle explaining the features and why people should care. Simple & clear.</p>
+
+        <div class="mt-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div class="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
+            <div class="w-12 h-12 bg-gray-200 rounded mb-4"></div>
+            <h3 class="font-semibold text-lg">Lorem Ipsum is simply don</h3>
+            <p class="mt-3 text-gray-600 text-sm"> Short explanatory copy that gives more detail.</p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
+            <div class="w-12 h-12 bg-gray-200 rounded mb-4"></div>
+            <h3 class="font-semibold text-lg">Lorem Ipsum is simply don</h3>
+            <p class="mt-3 text-gray-600 text-sm"> Short explanatory copy that gives more detail.</p>
+          </div>
+
+          <div class="bg-white rounded-lg p-6 shadow-sm flex flex-col items-start">
+            <div class="w-12 h-12 bg-gray-200 rounded mb-4"></div>
+            <h3 class="font-semibold text-lg">Lorem Ipsum is simply don</h3>
+            <p class="mt-3 text-gray-600 text-sm"> Short explanatory copy that gives more detail.</p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Three cards with lists -->
+    <section id="services" class="py-16">
+      <div class="max-w-6xl mx-auto px-6">
+        <h2 class="text-center text-2xl md:text-3xl font-bold text-gray-900">
+          <div class="mt-8">
+            <div class="slider">
+              <div class="track" aria-hidden="false">
+                <!-- Slide set A -->
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+                <!-- Slide set B (duplicate for seamless loop) -->
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+                <div class="slide-item">
+                  <article class="border rounded-lg p-6">
+                    <h3 class="font-bold text-lg text-primary mb-3">Lorem Ipsum is simply</h3>
+                    <ul class="list-disc pl-5 space-y-2 text-sm text-gray-700">
+                      <li>Point one about the service</li>
+                      <li>Point two about the service</li>
+                      <li>Point three about the service</li>
+                    </ul>
+                  </article>
+                </div>
+              </div>
+            </div>
+          </div>
+              
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Bottom Form Section -->
+    <section id="contact" class="bg-beige py-16">
+      <div class="max-w-4xl mx-auto px-6">
+        <h2 class="text-center text-2xl md:text-3xl font-bold text-gray-900">Lorem Ipsum Is Simply Do Text Of The Printing</h2>
+        <p class="text-center text-gray-600 mt-3 mb-8">Fill the form below for a quick quote — we reply within 24 hours.</p>
+
+        <form id="contactForm" class="bg-white p-6 rounded-lg shadow-sm grid grid-cols-1 md:grid-cols-2 gap-4" novalidate>
+
+          <div class="flex flex-col">
+            <label for="name" class="text-sm font-medium mb-1">Name</label>
+            <input id="name" name="name" type="text" required class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"/>
+          </div>
+
+          <div class="flex flex-col">
+            <label for="email" class="text-sm font-medium mb-1">Email</label>
+            <input id="email" name="email" type="email" required  class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"/>
+          </div>
+
+          <div class="flex flex-col md:col-span-2">
+            <label for="service" class="text-sm font-medium mb-1">Service</label>
+            <select id="service" name="service" class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary">
+              <option value="">Select a service</option>
+              <option>Rental</option>
+              <option>Construction</option>
+              <option>Consulting</option>
+            </select>
+          </div>
+
+          <div class="flex flex-col md:col-span-2">
+            <label for="message" class="text-sm font-medium mb-1">Message</label>
+            <textarea id="message" name="message" rows="5" required class="border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+          </div>
+
+          <div class="md:col-span-2 flex items-center justify-between gap-4">
+            <div class="text-sm text-green-700 hidden" id="formSuccess"> Thanks — your message has been sent. </div>
+            <button type="submit" class="ml-auto bg-primary text-white px-5 py-2 rounded font-semibold">Lorem Ipsum Sets</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="border-t">
+      <div class="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div>
+          <img src="images/Logo.png" alt="logo" class="w-36 mb-4" loading="lazy" decoding="async"/>
+          <p class="text-sm text-gray-600">Lorem Ipsum is simply dummy text of the printing and typesettingnindustry.</p>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Printings A</h4>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>Example link</li>
+            <li>Example link</li>
+            <li>Example link</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Majority</h4>
+          <ul class="space-y-2 text-sm text-gray-600">
+            <li>Example link</li>
+            <li>Example link</li>
+            <li>Example link</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="font-semibold mb-3">Generator</h4>
+          <p class="text-sm text-gray-600"> (123) 456-7890<br />info@loremipsum.com </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
